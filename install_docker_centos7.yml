@@ -1,6 +1,5 @@
 ---
 - hosts: all
-
   tasks:
   - name: Install Docker
     yum: name=docker state=latest
