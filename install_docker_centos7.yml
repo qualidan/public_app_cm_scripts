@@ -2,6 +2,8 @@
 - hosts: all
   tasks:
   - name: Install Docker
+    become: yes
     yum: name=docker state=latest
   - name: Start and enable the Docker daemon
+    become: yes
     service: name=docker state=started enabled=yes
