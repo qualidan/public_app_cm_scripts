@@ -1,8 +1,8 @@
 ---
-hosts: all
+- hosts: all
 
-tasks:
-- name: Install Docker
-  yum: name=docker state=latest
-- name: Start and enable the Docker daemon
-  service: name=docker state=started enabled=yes
+  tasks:
+  - name: Install Docker
+    yum: name=docker state=latest
+  - name: Start and enable the Docker daemon
+    service: name=docker state=started enabled=yes
