@@ -1,6 +1,7 @@
 ---
 - hosts: all
   vars:
+  - default_container_name: docker
   - create_containers: "{{CONTAINER_COUNT|default('4')}}"
   - default_container_image: "{{CONTAINER_NAME|default('ubuntu')}}"
   - default_container_command: "{{CONTAINER_CMD|default('sleep 1d')}}"
@@ -40,7 +41,7 @@
   - name: Create default containers
     become: yes
     docker_container:
-      name: "{{ default_container_name }}{{ item }}"
+      name: "{{ default_container_image }}{{ item }}"
       image: "{{ default_container_image }}"
       command: "{{ default_container_command }}"
       state: present
