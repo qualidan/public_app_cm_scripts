@@ -2,7 +2,7 @@
 - hosts: all
   vars:
   - create_containers: "{{CONTAINER_COUNT|default('4')}}"
-  - default_container_name: "{{CONTAINER_NAME|default('ubuntu')}}"
+  - default_container_image: "{{CONTAINER_NAME|default('ubuntu')}}"
   - default_container_command: "{{CONTAINER_CMD|default('sleep 1d')}}"
     
   tasks:
