@@ -20,6 +20,10 @@
       name: "{{ default_container_image }}"
       source: pull
       
+  - name: Install Docker Module for Python
+    pip:
+    name: docker  
+      
   - name: Create default containers
     become: yes
     docker_container:
