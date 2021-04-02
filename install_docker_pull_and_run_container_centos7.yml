@@ -33,8 +33,11 @@
       name: docker      
   
   - name: Printing variables
-    ansible.builtin.debug:
-      msg: of Containers = {{ create_containers }} container name = {{ default_container_image }} container command =  {{ default_container_command }}
+    debug:
+      msg: |
+      Number of Containers = {{ create_containers }} 
+      Container name = {{ default_container_image }} 
+      Container command =  {{ default_container_command }}
   
   - name: Pull default Docker image
     become: yes
