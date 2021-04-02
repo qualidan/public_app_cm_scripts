@@ -1,0 +1,25 @@
+---
+- hosts: all
+  vars:
+  - create_containers: "{{CONTAINER_COUNT|default('4')}}"
+  - default_container_name: "{{CONTAINER_NAME|default('ubuntu')}}"
+  - default_container_command: "{{CONTAINER_CMD|default('sleep 1d')}}"
+    
+  tasks:
+  - name: Install Docker
+    become: yes
+    yum: name=docker state=latest
+  - name: Start and enable the Docker daemon
+    become: yes
+    service: name=docker state=started enabled=yes
+  - name: Pull default Docker image
+    docker_image:
+      name: "{{ default_container_image }}"
+      source: pull
+  - name: Create default containers
+    docker_container:
+      name: "{{ default_container_name }}{{ item }}"
+      image: "{{ default_container_image }}"
+      command: "{{ default_container_command }}"
+      state: present
+    with_sequence: count={{ create_containers }}      
