@@ -32,9 +32,9 @@
     pip:
       name: docker      
   
-  - name: Print the gateway for each host when defined
+  - name: Printing variables
     ansible.builtin.debug:
-      msg: #of Containers = {{ create_containers }} container name = {{ default_container_image }} container command =  {{ default_container_command }}
+      msg: of Containers = {{ create_containers }} container name = {{ default_container_image }} container command =  {{ default_container_command }}
   
   - name: Pull default Docker image
     become: yes
