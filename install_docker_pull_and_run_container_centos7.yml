@@ -53,7 +53,7 @@
   - name: Pull default Docker image
     become: yes
     ansible.builtin.shell:
-      cmd: docker pull ubuntu
+      cmd: docker pull "{{ default_container_image }}"
             
   - name: Create default containers
     become: yes
