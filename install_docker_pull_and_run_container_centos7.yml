@@ -27,14 +27,9 @@
     become: yes
     yum: name=python-pip
     
-  - name: Install Docker
-    become: yes
-    yum: name=python-docker
-        
   - name: Install Docker Module for Python
     become: yes
-    pip:
-      name: docker
+    yum: name=python-docker
   
   - name: Install Parse Module for Python
     become: yes
