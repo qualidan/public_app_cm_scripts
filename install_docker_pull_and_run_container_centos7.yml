@@ -5,8 +5,15 @@
   - create_containers: "{{CONTAINER_COUNT|default('4')}}"
   - default_container_image: "{{CONTAINER_NAME|default('ubuntu')}}"
   - default_container_command: "{{CONTAINER_CMD|default('sleep 1d')}}"
-    
+
+
   tasks:
+  - name: Enable EPEL Repository on CentOS 7
+    become: yes
+    yum:
+      name: epel-release
+      state: latest
+      
   - name: Install Docker
     become: yes
     yum: 
@@ -16,13 +23,7 @@
   - name: Start and enable the Docker daemon
     become: yes
     service: name=docker state=started enabled=yes
-  
-  - name: Enable EPEL Repository on CentOS 7
-    become: yes
-    yum:
-      name: epel-release
-      state: latest
-    
+     
   - name: Install pip
     become: yes
     yum: name=python3-pip 
