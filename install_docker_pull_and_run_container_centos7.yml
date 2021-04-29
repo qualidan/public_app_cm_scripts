@@ -25,6 +25,7 @@
     become: yes
     yum: 
       name: docker-ce 
+      disable_gpg_check: yes
       state: latest
     
   - name: Start and enable the Docker daemon
