@@ -30,12 +30,6 @@
     yum: name=python-pip
     vars:
       ansible_python_interpreter: /usr/bin/python   
-   
-  - name: Install docker-compose
-    become: yes
-    pip: name=docker-compose version=1.8.1
-    vars:
-      ansible_python_interpreter: /usr/bin/python
       
   - name: fix requests
     become: yes
