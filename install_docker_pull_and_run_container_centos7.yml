@@ -31,6 +31,7 @@
     become: yes
     pip:
       name: docker
+      version: 4.4.4
    
   - name: Pull default Docker image
     become: yes
@@ -41,7 +42,8 @@
   - name: Create default containers
     become: yes
     docker_container:
+      namw: "container{{item}}"
       image: "{{ default_container_image }}"
       command: "{{ default_container_command }}"
-      state: present
+      state: started
     with_sequence: count="{{ create_containers }}"  
