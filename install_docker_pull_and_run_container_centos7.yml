@@ -15,6 +15,7 @@
       state: latest
       
   - name: Add repository
+    become: yes
     yum_repository:
       name: docker-ce
       description: docker-ce repo
