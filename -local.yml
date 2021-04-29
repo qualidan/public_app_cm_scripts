@@ -1,0 +1,50 @@
+---
+- hosts: localhost
+  vars:
+  - default_container_name: docker
+  - create_containers: "{{CONTAINER_COUNT|default('4')}}"
+  - default_container_image: "{{CONTAINER_NAME|default('ubuntu')}}"
+  - default_container_command: "{{CONTAINER_CMD|default('sleep 1d')}}"
+    
+  tasks:
+  - name: Install Docker
+    become: yes
+    yum: 
+      name: docker 
+      state: latest
+    
+  - name: Start and enable the Docker daemon
+    become: yes
+    service: name=docker state=started enabled=yes
+  
+  - name: Enable EPEL Repository on CentOS 7
+    become: yes
+    yum:
+      name: epel-release
+      state: latest
+    
+  - name: Install pip
+    become: yes
+    yum: name=python-pip
+    
+  - name: Install Docker Module for Python via pip
+    become: yes
+    pip:
+      name: docker
+      version: 4.4.4
+      state: forcereinstall
+   
+  - name: Pull default Docker image
+    become: yes
+    docker_image:
+      name: "{{ default_container_image }}"
+      source: pull
+            
+  - name: Create default containers
+    become: yes
+    docker_container:
+      name: "container{{item}}"
+      image: "{{ default_container_image }}"
+      command: "{{ default_container_command }}"
+      state: started
+    with_sequence: count="{{ create_containers }}" 
