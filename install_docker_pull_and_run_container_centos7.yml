@@ -34,27 +34,19 @@
      
   - name: Install pip
     become: yes
-    yum: name=python3-pip 
+    yum: name=python-pip 
     
   - name: Install Docker Module for Python via pip
     become: yes
     pip:
       name: docker
-      executable: pip3
-      
-  - name: fix requests
-    become: yes
-    pip: 
-      name: requests 
-      version: 2.12.1 
-      state: forcereinstall
-      executable: pip3
+      executable: pip
       
   - name: Pull default Docker image
     become: yes
     ansible.builtin.shell:
       cmd: docker pull "{{ default_container_image }}"
-            
+        
   - name: Create default containers
     become: yes
     docker_container:
