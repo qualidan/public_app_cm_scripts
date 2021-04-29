@@ -50,4 +50,4 @@
   - name: Create default containers
     become: yes
     ansible.builtin.shell:
-      cmd: docker run -d "{{ default_container_image }}" "{{default_container_command}}"
+      cmd: docker run -d '{{ default_container_image }}' '{{default_container_command}}'
