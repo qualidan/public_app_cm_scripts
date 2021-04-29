@@ -22,36 +22,25 @@
     yum:
       name: epel-release
       state: latest
-    vars:
-      ansible_python_interpreter: /usr/bin/python3
     
   - name: Install pip
     become: yes
-    yum: name=python-pip
-    vars:
-      ansible_python_interpreter: /usr/bin/python3   
+    yum: name=python-pip 
       
   - name: fix requests
     become: yes
     pip: name=requests version=2.12.1 state=forcereinstall
-    vars:
-      ansible_python_interpreter: /usr/bin/python3
     
   - name: Install Docker Module for Python via pip
     become: yes
     pip:
       name: docker
-    vars:
-      ansible_python_interpreter: /usr/bin/python3
-   
+
   - name: Pull default Docker image
     become: yes
     docker_image:
       name: "{{ default_container_image }}"
       source: pull
-    vars:
-      ansible_python_interpreter: /usr/bin/python3
-
             
   - name: Create default containers
     become: yes
