@@ -36,15 +36,11 @@
     become: yes
     yum: name=python-pip 
     
-  - name: fix requests
-    become: yes
-    pip: name=requests version=2.12.1 state=forcereinstall
-    
   - name: Install Docker Module for Python via pip
     become: yes
     pip:
       name: docker
-      version: 4.4.4
+      executable: pip3
 
   - name: Pull default Docker image
     become: yes
