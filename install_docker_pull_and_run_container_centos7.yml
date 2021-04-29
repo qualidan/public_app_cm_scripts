@@ -29,7 +29,7 @@
     
   - name: Install Docker
     become: yes
-    yum: name=docker
+    yum: name=python-docker
         
   - name: Install Docker Module for Python
     become: yes
