@@ -51,3 +51,9 @@
     become: yes
     ansible.builtin.shell:
       cmd: docker run -d {{ default_container_image }} {{default_container_command}}
+      
+  - name: print to stdout
+    command: docker ps
+    register: dockerps
+   
+ -  debug: msg="{{ dockerps.stdout }}"
