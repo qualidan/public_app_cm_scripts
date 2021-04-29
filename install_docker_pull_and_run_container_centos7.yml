@@ -40,6 +40,7 @@
     become: yes
     pip:
       name: docker
+      version: 4.4.4
 
   - name: Pull default Docker image
     become: yes
