@@ -41,6 +41,13 @@
     pip:
       name: docker
       executable: pip3
+      
+  - name: fix requests
+    pip: 
+      name: requests 
+      version: 2.12.1 
+      state: forcereinstall
+      executable: pip3
 
   - name: Pull default Docker image
     become: yes
