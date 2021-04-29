@@ -25,9 +25,6 @@
     yum: 
       name: docker-ce 
       state: latest
-    vars:
-      ansible_python_interpreter: /usr/bin/python
-
     
   - name: Start and enable the Docker daemon
     become: yes
