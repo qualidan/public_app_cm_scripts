@@ -30,7 +30,7 @@
   - name: Install Docker Module for Python
     become: yes
     pip:
-      name: docker
+      name: docker-py
   
   - name: Install Parse Module for Python
     become: yes
