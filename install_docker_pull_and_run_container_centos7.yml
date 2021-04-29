@@ -22,22 +22,31 @@
     yum:
       name: epel-release
       state: latest
+    vars:
+      ansible_python_interpreter: /usr/bin/python
     
   - name: Install pip
     become: yes
     yum: name=python-pip
+    vars:
+      ansible_python_interpreter: /usr/bin/python
     
   - name: Install Docker Module for Python via pip
     become: yes
     pip:
       name: docker
       version: 4.4.4
+    vars:
+      ansible_python_interpreter: /usr/bin/python
    
   - name: Pull default Docker image
     become: yes
     docker_image:
       name: "{{ default_container_image }}"
       source: pull
+     vars:
+      ansible_python_interpreter: /usr/bin/python
+
             
   - name: Create default containers
     become: yes
@@ -46,4 +55,4 @@
       image: "{{ default_container_image }}"
       command: "{{ default_container_command }}"
       state: started
-    with_sequence: count="{{ create_containers }}"  
+    with_sequence: count="{{ create_containers }}" 
