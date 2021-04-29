@@ -42,7 +42,7 @@
   - name: Create default containers
     become: yes
     docker_container:
-      namw: "container{{item}}"
+      name: "container{{item}}"
       image: "{{ default_container_image }}"
       command: "{{ default_container_command }}"
       state: started
