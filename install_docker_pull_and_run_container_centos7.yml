@@ -32,11 +32,13 @@
       ansible_python_interpreter: /usr/bin/python   
    
   - name: Install docker-compose
+    become: yes
     pip: name=docker-compose version=1.8.1
     vars:
       ansible_python_interpreter: /usr/bin/python
       
   - name: fix requests
+    become: yes
     pip: name=requests version=2.12.1 state=forcereinstall
     vars:
       ansible_python_interpreter: /usr/bin/python
