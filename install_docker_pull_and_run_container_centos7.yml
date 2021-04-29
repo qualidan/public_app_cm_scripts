@@ -31,6 +31,7 @@
     become: yes
     pip:
       name: docker
+    executable: pip3.3
 
   - name: Pull default Docker image
     become: yes
