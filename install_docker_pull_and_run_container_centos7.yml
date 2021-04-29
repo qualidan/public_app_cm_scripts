@@ -49,9 +49,5 @@
         
   - name: Create default containers
     become: yes
-    docker_container:
-      name: "container{{item}}"
-      image: "{{ default_container_image }}"
-      command: "{{ default_container_command }}"
-      state: started
-    with_sequence: count="{{ create_containers }}" 
+    ansible.builtin.shell:
+      cmd: docker run -d "{{ default_container_image }}" "{{default_container_command}}"
