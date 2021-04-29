@@ -14,11 +14,11 @@
       name: epel-release
       state: latest
       
- - name: Add repository
-   yum_repository:
-     name: docker-ce
-     description: docker-ce repo
-     baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+  - name: Add repository
+    yum_repository:
+      name: docker-ce
+      description: docker-ce repo
+      baseurl: https://download.docker.com/linux/centos/docker-ce.repo
       
   - name: Install Docker
     become: yes
