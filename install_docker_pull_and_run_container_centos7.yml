@@ -43,6 +43,7 @@
       executable: pip3
       
   - name: fix requests
+    become: yes
     pip: 
       name: requests 
       version: 2.12.1 
