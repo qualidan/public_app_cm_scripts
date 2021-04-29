@@ -51,7 +51,6 @@
     become: yes
     ansible.builtin.shell:
       cmd: docker run -d {{ default_container_image }} {{default_container_command}}
-    with_sequence: start=1 end="{{ create_containers }}"
     
   - name: print to stdout
     command: docker ps
