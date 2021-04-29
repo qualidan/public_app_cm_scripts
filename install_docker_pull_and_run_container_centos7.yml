@@ -35,9 +35,9 @@
   - name: Printing variables
     debug:
       msg: |
-      Number of Containers = {{ create_containers }} 
-      Container name = {{ default_container_image }} 
-      Container command =  {{ default_container_command }}
+      Number of Containers = "{{ create_containers }}" 
+      Container name = "{{ default_container_image }}" 
+      Container command =  "{{ default_container_command }}"
   
   - name: Pull default Docker image
     become: yes
