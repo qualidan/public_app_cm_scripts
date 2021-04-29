@@ -25,16 +25,16 @@
     
   - name: Install pip
     become: yes
-    yum: name=python-pip
+    yum: name=python-pip3
     
   - name: Install Docker Module for Python via pip
     become: yes
-    pip:
+    pip3:
       name: docker
   
   - name: Install Parse Module for Python
     become: yes
-    pip:
+    pip3:
       name: parse
   
   - name: Pull default Docker image
